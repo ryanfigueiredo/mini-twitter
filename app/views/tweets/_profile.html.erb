@@ -33,14 +33,14 @@
         <div class="level-item has-centered-text">
           <div>
             <p class="heading">Following</p>
-            <p class="title is-6">123</p>
+            <p class="title is-6"><%= current_user.following.count %></p>
           </div>
         </div>
 
         <div class="level-item has-centered-text">
           <div>
             <p class="heading">Followers</p>
-            <p class="title is-6">456k</p>
+            <p class="title is-6"><%= current_user.followers.size %></p>
           </div>
         </div>
       </div>

@@ -8,7 +8,9 @@
     <% end %>
       <%= render 'feed', tweets: @tweets, tweet: @tweet %>
 
-      <%= render 'who_to_follow', users: @users %>
+    <% if user_signed_in? %>
+      <%= render 'who_to_follow', users: @users, relationship: @relationship %>
+    <% end %>
     </div>
   </div>
 </section>

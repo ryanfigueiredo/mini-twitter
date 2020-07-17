@@ -14,7 +14,12 @@
             <div class="content">
               <p>
                 <small><%= user.username %></small>
-                <%= link_to 'Seguir', "#" %>
+                
+                <% if current_user.followers.where(follower_id: user.id).empty? %>
+                  <%= link_to 'Seguir', relationships_create_path(user.id) %>
+                <% else %>
+                  <%= link_to 'Seguindo', relationships_destroy_path(user.id) %>
+                <% end %>
               </p>
             </div>
           </div>
