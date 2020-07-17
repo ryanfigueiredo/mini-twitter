@@ -4,14 +4,11 @@ class RelationshipsController < ApplicationController
   before_action :set_destroy_relationship, only: :destroy
 
   def create
+    @relationship.save
+      
     respond_to do |format|
-      if @relationship.save
-        format.html { redirect_to root_path, notice: "You are following #{@follower_user.username}" }
-        format.json { render :show, status: :created, location: @relationship }
-      else
-        format.html { render :new }
-        format.json { render json: @relationship.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to root_path, notice: "You are following #{@follower_user.username}" }
+      format.json { head :no_content }
     end
   end
 
