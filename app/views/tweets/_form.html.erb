@@ -8,4 +8,5 @@
   </div>
 
   <%= f.button :submit, class: "button is-info" %>
+  <%= link_to 'Cancel', tweets_path, class: "button is-dark" if render_cancel_button %>
 <% end %>

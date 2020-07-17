@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweets
+
+  has_many :followers, :class_name => 'Relationships', :foreign_key => 'user_id'
+  has_many :following, :class_name => 'Relationships', :foreign_key => 'follower_id' 
+
+  scope :all_except, ->(user) { where.not(id: user) }
 end

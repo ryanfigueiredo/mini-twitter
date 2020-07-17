@@ -1,11 +1,14 @@
 <section class="section">
   <div class="container">
     <div class="columns">
-      <%= render 'trends' %>
-
+    <% if user_signed_in? %>
+      <%= render 'profile' %>
+    <% else %>
+      <%#= render 'trends' %>
+    <% end %>
       <%= render 'feed', tweets: @tweets, tweet: @tweet %>
 
-      <%= render 'who_to_follow' %>
+      <%= render 'who_to_follow', users: @users %>
     </div>
   </div>
 </section>

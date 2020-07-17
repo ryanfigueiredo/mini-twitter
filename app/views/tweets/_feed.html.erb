@@ -1,22 +1,24 @@
 <div class="column is-half">
-  <article class="media box">
-    <figure class="media-left">
-      <p class="image is64x64">
-        <img src="https://bulma.io/images/placeholders/64x64.png">
-      </p>
-    </figure>
+  <% if user_signed_in? %>
+    <article class="media box">
+      <figure class="media-left">
+        <p class="image is64x64">
+          <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+        </p>
+      </figure>
 
-    <div class="media-content">
-      <%= render "form", tweet: tweet %>
-    </div>
-  </article>
+      <div class="media-content">
+        <%= render "form", tweet: tweet, render_cancel_button: false %>
+      </div>
+    </article>
+  <% end %>
 
   <% tweets.each do |tweet|%>
     <div class="box">
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/64x64.png">
+            <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.name) %>
           </figure>
         </div>
 
@@ -27,21 +29,9 @@
             <p><%= tweet.tweet %></p>
           </div>
 
-          <nav class="level">
-            <div class="level-left is-mobile">
-              <%= link_to tweet, class: "level-item" do %>
-                <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-              <% end %>
-
-              <%= link_to edit_tweet_path(tweet), class: "level-item" do %>
-                <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-              <% end %>
-
-              <%= link_to tweet, method: :delete, data: { confirm: "Are you sure wan to delete this tweet? "} do %>
-                <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-              <% end %>
-            </div>
-          </nav>
+          <% if user_signed_in? %>
+            <%#= render 'actions', tweet: tweet %>
+          <% end %>
         </div>
       </article>
     </div>
