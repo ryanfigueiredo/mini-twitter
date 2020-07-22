@@ -1,0 +1,34 @@
+<nav class="border fixed split-nav">
+  <div class="nav-brand">
+    <h3><%= link_to 'Mini-Twitter', root_path %></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+    <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        <% if user_signed_in? %>
+          <li><%= fa_icon "list" %></li>
+          <li><%= fa_icon "envelope" %></li>
+          <li><%= fa_icon "bell" %></li>
+
+          <li>
+            <%= link_to edit_user_registration_path, class: "not-border-bottom" do %>
+              <%= fa_icon "user" %>
+            <% end %>
+          </li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

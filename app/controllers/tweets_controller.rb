@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.new
-    
+
     @users = User.all_except(current_user)
   end
 
@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
   def new
     @tweet = current_user.tweets.build
   end
- 
+
   # GET /tweets/1/edit
   def edit
   end
@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path, alert: "Tweet text cannot be blank " }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
