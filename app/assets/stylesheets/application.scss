@@ -12,21 +12,51 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  *= require paper.min.css
  */
 
- .navbar-brand .title {
-   color: white;
- }
+ @import "font-awesome";
 
- .image {
-   border-radius: 50%;
-   
-   img {
-     border-radius: 50%;
-   }
- }
+.m-top-1 {
+  margin-top: 2.5rem;
+}
 
- .notification:not(:last-child) {
-   margin-bottom: 0;
- }
+.m-top-2 {
+  margin-top: 3.5rem;
+}
+
+.m-bt-1 {
+  margin-bottom: 1.5rem;
+}
+
+.m-bt-0 {
+  margin-bottom: 0 !important;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.p-bt-0 {
+  padding-bottom: 0 !important;
+}
+
+.fixed-alert {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+}
+
+.not-border-bottom {
+  border-bottom: none;
+}
+
+.not-border-bottom:hover {
+  border-bottom: none;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

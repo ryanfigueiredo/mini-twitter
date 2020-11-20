@@ -1,16 +1,22 @@
-<section class="section">
-  <div class="container">
-    <div class="columns">
-    <% if user_signed_in? %>
-      <%= render 'profile' %>
-    <% else %>
-      <%#= render 'trends' %>
-    <% end %>
-      <%= render 'feed', tweets: @tweets, tweet: @tweet %>
+<div class="row m-top-1">
+  <div class="sm-12 md-8 col">
+    <div class="paper">
+      <% if user_signed_in? %>
+        <p><%= current_user.name %></p>
+        <%= render 'form', tweet: @tweet, render_cancel_button: false %>
+      <% end %>
 
-    <% if user_signed_in? %>
-      <%= render 'who_to_follow', users: @users, relationship: @relationship %>
-    <% end %>
+      <%= render 'feed', tweets: @tweets %>
     </div>
   </div>
-</section>
+
+  <div class="sm-12 md-4 col">
+    <div class="paper">
+      <h3 class="sidebar-title" style="text-align:center">
+        <span>Who to follow</span>
+      </h3>
+
+      <%= render 'who_to_follow', users: @users %>
+    </div>
+  </div>
+</div>
